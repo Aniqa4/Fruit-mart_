@@ -3,7 +3,7 @@ import './Banner.css'
 
 function Banner() {
     return (
-        <div className='bg-image my-5'>
+        <div className='bg-image'>
             <div className='py-20 text-white text-2xl  lg:py-96'>
                 <div className=' bg-slate-700 bg-opacity-25 p-10'>
                     <h1>Welcome to <span className=' font-bold text-black'>Fruit<span className=' text-red-700'>Mart

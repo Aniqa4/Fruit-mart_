@@ -1,6 +1,7 @@
 import React from 'react'
 import Marquee from "react-fast-marquee";
 import Banner from './Banner';
+import NewArrivals from './NewArrivals';
 
 function Home() {
     return (
@@ -16,6 +17,7 @@ function Home() {
                 </Marquee>
             </div>
             <Banner></Banner>
+            <NewArrivals></NewArrivals>
         </div>
     )
 }
