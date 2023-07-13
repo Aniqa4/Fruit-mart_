@@ -15,7 +15,7 @@ function Navbar() {
                     <Link to='/dashboard'>Dashboard</Link>
                 </div>
                 <div>
-                    <p className=' text-3xl'><BiSolidUserCircle></BiSolidUserCircle></p>
+                    <Link to='sign-in'><p className=' text-3xl'><BiSolidUserCircle></BiSolidUserCircle></p></Link>
                 </div>
             </div>
         </div>

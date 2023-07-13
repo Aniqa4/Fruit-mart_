@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Title from '../Components/Title'
+import TopHeadlines from '../Components/TopHeadlines';
 
 function AllProducts() {
   const [fruits, setfruits] = useState([]);
@@ -15,6 +16,7 @@ function AllProducts() {
   console.log(fruits);
   return (
     <div>
+      <TopHeadlines></TopHeadlines>
       <Title title={'all products'}></Title>
       <div className=' container mx-auto grid grid-cols-6 gap-5 mb-5'>
         {
