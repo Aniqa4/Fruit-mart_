@@ -14,12 +14,11 @@ function Navbar() {
                     <Link to='/'><h1 className=' text-2xl font-bold'>Fruit<span className=' text-red-700'>Mart</span></h1></Link>
                     <Link to='/all-products'>All Products</Link>
                     <Link to='/Cart'><GrCart/></Link>
-                    <Link to='/dashboard'>Dashboard</Link>
                 </div>
                 <div>
                     {
                         user?<Link to='user-info'><p className=' text-3xl'><BiSolidUserCircle></BiSolidUserCircle></p></Link>:
-                        <p><Link to='sign-in' >Sign In</Link></p>
+                        <p className=' hover:font-semibold'><Link to='sign-in' >Sign In</Link></p>
                     }
                 </div>
             </div>

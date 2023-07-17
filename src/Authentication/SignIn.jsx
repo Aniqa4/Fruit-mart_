@@ -13,12 +13,14 @@ function SignIn() {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
 
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
+
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://fruit-mart-server-side-aniqa4.vercel.app/users')
           .then(res => res.json())
           .then(data => {
             setUsers(data)
@@ -26,38 +28,36 @@ function SignIn() {
       }, [])
 
 
+
+    //------------login with email pass----------------
     const handleSignIn = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-
-
         signIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 form.reset();
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'You have successfully signned In!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
                 setError(error.message);
-            })
-
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'You have successfully signned In!',
-            showConfirmButton: false,
-            timer: 1500
-
-        })
-        
+            })  
     }
+
+
      //---------------google sign in---------------------
     const handleGoogleSignIn = () => {
-
         googleSignIn(provider)
             .then(result => {
                 const loggedUser = result.user;
@@ -67,21 +67,17 @@ function SignIn() {
                         title: 'You have successfully signned In!',
                         showConfirmButton: false,
                         timer: 1500
-
                     })
 
                 const email = loggedUser?.email;
                 const existingUser = users.find(x => x.email === email)
-
                 if (!existingUser) {
                     const name = loggedUser.displayName;
                     const photoURL = loggedUser.photoURL;
                     const email = loggedUser.email;
-                    const role = 'client';
+                    const role = 'buyer';
                     const newUser = { name, email, photoURL, role }
-
-
-                    fetch('http://localhost:5000/user', {
+                    fetch('https://fruit-mart-server-side-aniqa4.vercel.app/user', {
                         method: 'POST',
                         headers:
                             { 'content-type': 'application/json' },
@@ -90,18 +86,13 @@ function SignIn() {
                         .then(res => res.json())
                         .then(data => {
                             console.log(data);
-
                         })
-
                 }
-
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message)
             })
-
-
     }
 
 

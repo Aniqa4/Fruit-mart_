@@ -1,19 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import Title from '../Components/Title'
 import TopHeadlines from '../Components/TopHeadlines';
+import Swal from 'sweetalert2';
 
 function AllProducts() {
   const [fruits, setfruits] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/fruits')
+    fetch('https://fruit-mart-server-side-aniqa4.vercel.app/fruits')
       .then(res => res.json())
       .then(data => {
         setfruits(data)
       })
   }, [])
 
-  console.log(fruits);
+  let selectedItems=localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')):[];
+
+  const handleCart=(product_id,name,image,price)=>{
+    //console.log({product_id,name,image,price});
+    const myOrder={product_id,name,image,price};
+    selectedItems.push(myOrder)
+    console.log(selectedItems);
+    localStorage.setItem('cart',JSON.stringify(selectedItems));
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Added to Cart!',
+      showConfirmButton: false,
+      timer:500
+
+  })
+  }
+
+  //console.log(fruits);
   return (
     <div>
       <TopHeadlines></TopHeadlines>
@@ -25,10 +44,11 @@ function AllProducts() {
               <img src={fruit.image} className=' rounded' />
               <div className='p-5'>
                 <h1 className=' font-semibold text-xl'>{fruit.name}</h1>
-                <p>Price/kg: ${fruit.price}</p>
+                <p>Price/kg : {fruit.price} Tk</p>
                 <p>Origin: {fruit.origin}</p>
                 <p>Available Quanlity: {fruit.quantity}kg</p>
-                <button className='rounded px-2 bg-white hover:bg-slate-400'>Add to cart</button>
+                <button onClick={()=>handleCart(fruit._id,fruit.name,fruit.image,fruit.price)}
+                className='rounded px-2 bg-white hover:bg-slate-400'>Add to cart</button>
                 <button className='rounded px-2 bg-white hover:bg-slate-400'>View Details</button>
               </div>
             </div>)

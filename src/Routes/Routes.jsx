@@ -3,11 +3,13 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Home/Home";
 import Layout from "../Layout/Layout";
 import AllProducts from "../AllProducts/AllProducts";
-import Dashboard from "../Dashboard/Dashboard";
 import Cart from "../Cart/Cart";
 import SignIn from "../Authentication/SignIn";
 import SignUp from "../Authentication/SignUp";
 import UserInfo from "../UserInfo/UserInfo";
+import AddProducts from "../Dashboard/AddProducts";
+import Checkout from "../Cart/Checkout";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 
 const router = createBrowserRouter([{
@@ -27,12 +29,12 @@ const router = createBrowserRouter([{
             element: <AllProducts></AllProducts>
         },
         {
-            path: "/dashboard",
-            element: <Dashboard></Dashboard>
-        },
-        {
             path: "/cart",
             element: <Cart></Cart>
+        },
+        {
+            path: "/cart/checkout",
+            element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>
         },
         {
             path: "/sign-in",
@@ -45,6 +47,10 @@ const router = createBrowserRouter([{
         {
             path: "/user-info",
             element: <UserInfo></UserInfo>
+        },
+        {
+            path: "/user-info/add-products",
+            element: <AddProducts></AddProducts>
         },
     ]
 }

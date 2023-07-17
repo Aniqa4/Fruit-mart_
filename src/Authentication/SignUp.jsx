@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import TopHeadlines from '../Components/TopHeadlines';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from './AuthProvider';
+import { AuthContext, auth } from './AuthProvider';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
 
@@ -13,19 +13,15 @@ function SignUp() {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-
     const handleSignUp = event => {
         event.preventDefault();
-
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
-        const role = 'client';
+        const role = 'buyer';
         const photoURL = "https://i.ibb.co/kX163fp/blank-profile-picture-973460-1280.webp"
         const newUser = { name, email, role, photoURL }
-
-
 
         signUp(email, password)
             .then(result => {
@@ -42,8 +38,7 @@ function SignUp() {
                 setError(error.message);
             })
 
-
-        fetch('http://localhost:5000/user', {
+        fetch('https://fruit-mart-server-side-aniqa4.vercel.app/user', {
             method: 'POST',
             headers:
                 { 'content-type': 'application/json' },
@@ -57,10 +52,9 @@ function SignUp() {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'You have successfully signned UP!',
+            title: 'You have successfully signned Up!',
             showConfirmButton: false,
             timer: 1500
-
         })
         navigate(from, { replace: true })
     }

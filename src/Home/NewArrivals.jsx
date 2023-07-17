@@ -1,17 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import Title from '../Components/Title'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 function NewArrivals() {
     const [fruits, setfruits] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/new-arrivals')
+        fetch('https://fruit-mart-server-side-aniqa4.vercel.app/new-arrivals')
             .then(res => res.json())
             .then(data => {
                 setfruits(data)
             })
     }, [])
+
+    let selectedItems = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+
+    const handleCart = (product_id, name, image, price) => {
+        //console.log({product_id,name,image,price});
+        const myOrder = { product_id, name, image, price };
+        selectedItems.push(myOrder)
+        console.log(selectedItems);
+        localStorage.setItem('cart', JSON.stringify(selectedItems));
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Added to Cart!',
+            showConfirmButton: false,
+            timer: 500
+
+        })
+    }
     return (
         <div>
             <Title title='New Arrivals'></Title>
@@ -21,9 +40,10 @@ function NewArrivals() {
                         <div key={index} className=' bg-yellow-300'>
                             <img src={fruit.image} className=' rounded' />
                             <div className='p-5'>
-                                <h1 className=' text-xl'>Fruit Name</h1>
-                                <p>Price</p>
-                                <button className='rounded px-5 py-2 bg-white me-2 hover:bg-slate-400'>Add to cart</button>
+                                <h1 className=' text-xl'>{fruit.name}</h1>
+                                <p>Price : {fruit.price} Tk</p>
+                                <button onClick={()=>handleCart(fruit._id,fruit.name,fruit.image,fruit.price)}
+                                className='rounded px-5 py-2 bg-white me-2 hover:bg-slate-400'>Add to cart</button>
                                 <button className='rounded px-5 py-2 bg-white hover:bg-slate-400'>View Details</button>
                             </div>
                         </div>)
