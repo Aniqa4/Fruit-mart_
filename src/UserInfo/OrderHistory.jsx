@@ -4,7 +4,7 @@ import Title from '../Components/Title'
 function OrderHistory({ email }) {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/orders')
+    fetch('https://fruit-mart-server-side-aniqa4.vercel.app/orders')
       .then(res => res.json())
       .then(data => {
         setOrders(data)
