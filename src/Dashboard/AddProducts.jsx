@@ -37,7 +37,7 @@ export default function AddProducts() {
         })
     }
     return (
-        <div className=' container mx-auto'>
+        <div className=' container mx-auto px-5'>
             <Title title={'add items'}></Title>
             <form onSubmit={handleAdd} className='grid grid-cols-1 gap-5'>
                 <input type="product-name" name='productName' placeholder='Product Name'

@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
 import Swal from 'sweetalert2';
 import { GoogleAuthProvider } from 'firebase/auth';
+import Title from '../Components/Title';
 
 
 function SignIn() {
@@ -100,7 +101,8 @@ function SignIn() {
     return (
         <div>
             <TopHeadlines></TopHeadlines>
-            <div className='lg:w-3/12 mx-auto my-20 p-20 shadow-2xl rounded-xl'>
+            <Title title={'Sign in'}></Title>
+            <div className='lg:w-3/12 mx-auto md:my-20 p-10 md:p-20 md:shadow-2xl md:rounded-xl'>
                 <form onSubmit={handleSignIn} className='grid grid-cols-1 gap-5'>
                     <input type="email" name='email' className=' rounded px-2 py-3  bg-gray-100 hover:bg-gray-200 shadow-inner' />
                     <input type="password" name='password' className=' rounded px-2 py-3  bg-gray-100 hover:bg-gray-200 shadow-inner' />

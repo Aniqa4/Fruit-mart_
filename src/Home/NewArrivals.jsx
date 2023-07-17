@@ -34,17 +34,17 @@ function NewArrivals() {
     return (
         <div>
             <Title title='New Arrivals'></Title>
-            <div className='container mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-5'>
+            <div className='text-xs md:text-base  container md:mx-auto grid grid-cols-2 md:grid-cols-4 md:gap-10 gap-5 px-5 mb-5'>
                 {
                     fruits.map((fruit, index) =>
                         <div key={index} className=' bg-yellow-300'>
                             <img src={fruit.image} className=' rounded' />
-                            <div className='p-5'>
-                                <h1 className=' text-xl'>{fruit.name}</h1>
+                            <div className='lg:p-5 p-2'>
+                                <h1 className='text-xl'>{fruit.name}</h1>
                                 <p>Price : {fruit.price} Tk</p>
                                 <button onClick={()=>handleCart(fruit._id,fruit.name,fruit.image,fruit.price)}
-                                className='rounded px-5 py-2 bg-white me-2 hover:bg-slate-400'>Add to cart</button>
-                                <button className='rounded px-5 py-2 bg-white hover:bg-slate-400'>View Details</button>
+                                className='rounded mb-2 mg:mb-0 p-2 md:px-5 md:py-2 bg-white me-2 hover:bg-slate-400'>Add to cart</button>
+                                <button className='rounded mb-2 mg:mb-0 p-2 md:px-5 md:py-2 bg-white hover:bg-slate-400'>View Details</button>
                             </div>
                         </div>)
                 }

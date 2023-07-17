@@ -9,7 +9,7 @@ function Layout() {
     return (
         <div>
             <Navbar></Navbar>
-            <div className='pt-16'>
+            <div className='lg:pt-16 pt-20'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

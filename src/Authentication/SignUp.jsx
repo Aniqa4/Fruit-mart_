@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext, auth } from './AuthProvider';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
+import Title from '../Components/Title';
 
 function SignUp() {
     const { signUp } = useContext(AuthContext);
@@ -63,7 +64,8 @@ function SignUp() {
     return (
         <div>
             <TopHeadlines></TopHeadlines>
-            <div className='lg:w-3/12 mx-auto my-20 p-20 shadow-2xl rounded-xl'>
+            <Title title={'sign Up'}></Title>
+            <div className='lg:w-3/12 lg:mx-auto md:my-20 p-10 lg:p-20 md:shadow-2xl md:rounded-xl'>
                 <form onSubmit={handleSignUp} className='grid grid-cols-1 gap-5'>
                     <input type="name" name='name' placeholder='Enter your Name'
                         className=' rounded px-2 py-3  bg-gray-100 hover:bg-gray-200 shadow-inner' />
