@@ -98,7 +98,7 @@ function Checkout() {
                             <h1>Subtotal={totalPrice} Taka</h1>
                             <p>Shipping: 60 Taka (Cash On Delivery)</p>
                             <p>Total : {totalPrice + 60} Taka</p>
-                            <button onClick={sendToDB} className=' bg-white px-3 py-2 my-2 hover:bg-slate-300 shadow'>Cinfirm Order</button>
+                            <button onClick={sendToDB} className=' bg-white px-3 py-2 my-2 hover:bg-slate-300 shadow'>Confirm Order</button>
                         </div>
                     </>
                 }

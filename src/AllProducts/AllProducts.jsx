@@ -37,7 +37,7 @@ function AllProducts() {
     <div>
       <TopHeadlines></TopHeadlines>
       <Title title={'all products'}></Title>
-      <div className=' text-xs md:text-base container px-5 md:mx-auto grid grid-cols-2 md:grid-cols-6 gap-5 mb-5'>
+      <div className=' text-xs md:text-base container px-5 md:mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mb-5'>
         {
           fruits.map((fruit,index) =>
             <div key={index} className=' bg-yellow-300'>
