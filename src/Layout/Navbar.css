@@ -1,0 +1,12 @@
+.nav{
+    display: none;
+}
+
+@media only screen and (max-width:576px) {
+    .nav2{
+       display: none;
+    }
+    .nav{
+        display: flex;
+    }
+}

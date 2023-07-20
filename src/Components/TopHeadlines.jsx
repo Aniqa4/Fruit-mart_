@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 function TopHeadlines() {
     return (
-        <div className=' text-sm text-gray-500'>
+        <div className=' text-sm text-gray-500 -z-50'>
             <Marquee>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to &nbsp;
                 <span className=' font-bold'>Fruit <span className=' text-red-700'>Mart
